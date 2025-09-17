@@ -8,6 +8,8 @@
 
 Programmation d’un site web marchand proposant de la nourriture avec gestion des menus et gestion d’un affichage précisant quand la commande est prête. De plus, une option historique des commandes devrait être accessible.
 
+<img src="./assets/img/schema.png">
+
 ---
 
 ### **3. Fonctionnalités principales**
