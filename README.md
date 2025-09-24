@@ -42,8 +42,8 @@ Programmation d’un site web marchand proposant de la nourriture avec gestion d
 
 ## Documentation MCD/MLD/MPD :
 
-<img src="./assets/img/MCD.png">
+<img src="./assets/img/MCD.PNG">
 ---
-<img src="./assets/img/MLD.png">
+<img src="./assets/img/MLD.PNG">
 ---
-<img src="./assets/img/mpd.png">
+<img src="./assets/img/mpd.PNG">
