@@ -46,4 +46,4 @@ Programmation d’un site web marchand proposant de la nourriture avec gestion d
 ---
 <img src="./assets/img/MLD.PNG">
 ---
-<img src="./assets/img/mpd.PNG">
+<img src="./assets/img/MPD.PNG">
