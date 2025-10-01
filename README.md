@@ -52,7 +52,7 @@ Programmation d’un site web marchand proposant de la nourriture avec gestion d
 
 ## Endpoints de l'API
 
-Adresse de l'API (en local) : http://localhost/____
+Adresse de l'API (en local) : http://localhost/alexandre-api-eatsmart/
 
 Voici les différents endpoints de l'API : 
 - `GET /articles` → Afficher la liste des articles
