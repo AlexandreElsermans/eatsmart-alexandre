@@ -1,8 +1,8 @@
 <?php
 
-require_once "C:\wamp64\www\alexandre-api-eatsmart\controllers\articleController.php";
-require_once "C:\wamp64\www\alexandre-api-eatsmart\controllers\categorieController.php";
-require_once "C:\wamp64\www\alexandre-api-eatsmart\controllers\commandeController.php";
+require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\articleController.php";
+require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\categorieController.php";
+require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\commandeController.php";
 
 $articleController = new ArticleController();
 $categorieController = new CategorieController();
@@ -20,9 +20,6 @@ if (empty($_GET["page"])) {
     // On découpe cette chaîne en segments, en séparant sur le caractère "/"
     // Cela donne un tableau, ex : ["articles", "3"]
     $url = explode("/", $_GET['page']);
-    
-    // Affiche le contenu du tableau pour vérifier comment l’URL est interprétée
-    print_r($url);
 
     // On teste le premier segment pour déterminer la ressource demandée
     switch($url[0]) {
@@ -33,7 +30,7 @@ if (empty($_GET["page"])) {
                 echo "Afficher les informations de l'article : ". $url[1];
             } else {
                 // Sinon, on affiche tous les articles
-                print_r($articleController->getAllArticles());
+                $articleController->getAllArticles();
             }
             break;
 
@@ -41,7 +38,7 @@ if (empty($_GET["page"])) {
             if (isset($url[1])) {
                 echo "Afficher les informations de la catégorie : ". $url[1];
             } else {
-                print_r($categorieController->getAllCategories());
+                $categorieController->getAllCategories();
             }
             break;
 
@@ -49,7 +46,7 @@ if (empty($_GET["page"])) {
             if (isset($url[1])) {
                 echo "Afficher les informations de la commande : ". $url[1];
             } else {
-                print_r($commandeController->getAllCommandes());
+                $commandeController->getAllCommandes();
             }
             break;
 

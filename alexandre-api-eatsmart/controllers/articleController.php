@@ -9,9 +9,14 @@ class ArticleController {
         $this->model = new ArticleModel();
     }
 
-    public function getAllArticles(){
+    public function getAllArticles () {
         $articles = $this->model->getDBAllArticles();
         echo json_encode($articles);
+    }
+
+    public function getArticleByID ($idArticle) {
+        $ligneArticle = $this->model->getDBArticleById($idArticle);
+        echo json_encode($ligneArticle);
     }
 }
 
