@@ -22,7 +22,7 @@ class ArticleModel {
         $stmt = $this->pdo->prepare("SELECT * FROM article WHERE id_article = :idArticle");
         $stmt->bindValue(":idArticle", $idArticle, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO:FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
