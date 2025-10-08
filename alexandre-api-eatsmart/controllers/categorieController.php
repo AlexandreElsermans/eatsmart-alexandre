@@ -13,6 +13,11 @@ class CategorieController {
         $categories = $this->model->getDBAllCategories();
         echo json_encode($categories);
     }
+
+    public function getCategorieById ($idCat) {
+        $ligneCat = $this->model->getDBCategorieById($idCat);
+        echo json_encode($ligneCat);
+    }
 }
 
 //$categorieController = new CategorieController();

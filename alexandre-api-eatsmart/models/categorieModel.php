@@ -17,6 +17,13 @@ class CategorieModel {
         $stmt = $this->pdo->query("SELECT * FROM categorie");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getDBCategorieById ($idCat) {
+        $stmt = $this->pdo->prepare("SELECT *FROM categorie WHERE id_categorie = :idCat");
+        $stmt->bindValue(":idCat", $idCat, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 //$categorie1 = new CategorieModel();

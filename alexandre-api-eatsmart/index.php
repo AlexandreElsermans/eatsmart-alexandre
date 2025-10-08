@@ -36,7 +36,7 @@ if (empty($_GET["page"])) {
 
         case "categories" :
             if (isset($url[1])) {
-                echo "Afficher les informations de la catégorie : ". $url[1];
+                $categorieController->getCategorieById($url[1]);
             } else {
                 $categorieController->getAllCategories();
             }
