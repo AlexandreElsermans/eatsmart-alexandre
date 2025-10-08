@@ -36,7 +36,11 @@ if (empty($_GET["page"])) {
 
         case "categories" :
             if (isset($url[1])) {
-                $categorieController->getCategorieById($url[1]);
+                if (!(isset($url[2]))) {
+                    $categorieController->getCategorieById($url[1]);
+                } elseif (isset($url[2]) && $url[2] == "articles"){
+                    $categorieController->getArticleByCat($url[1]);
+                }
             } else {
                 $categorieController->getAllCategories();
             }

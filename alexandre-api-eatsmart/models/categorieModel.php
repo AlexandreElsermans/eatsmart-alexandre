@@ -24,6 +24,16 @@ class CategorieModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getDBArticleByCat($idCat) {
+        $requete = "SELECT article.nom FROM article 
+        JOIN categorie ON categorie.id_categorie = article.id_categorie
+        WHERE categorie.id_categorie = :idCat";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindValue(":idCat", $idCat, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 //$categorie1 = new CategorieModel();
