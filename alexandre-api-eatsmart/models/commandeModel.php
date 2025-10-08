@@ -17,6 +17,13 @@ class CommandeModel {
         $stmt = $this->pdo->query("SELECT * FROM commande");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getDBCommandesByID ($idCommande) {
+        $stmt = $this->pdo->prepare("SELECT * FROM commande WHERE id_commande = :idCommande");
+        $stmt->bindValue(":idCommande", $idCommande, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 //$commande1 = new CommandeModel();

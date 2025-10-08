@@ -44,7 +44,7 @@ if (empty($_GET["page"])) {
 
         case "commandes" :
             if (isset($url[1])) {
-                echo "Afficher les informations de la commande : ". $url[1];
+                $commandeController->getCommandesByID($url[1]);
             } else {
                 $commandeController->getAllCommandes();
             }
