@@ -18,6 +18,12 @@ class ArticleController {
         $ligneArticle = $this->model->getDBArticleById($idArticle);
         echo json_encode($ligneArticle);
     }
+
+    public function getCommandeByArticle($idArticle) {
+        $commandeArticle = $this->model->getDBCommandeByArticle($idArticle);
+        echo json_encode($commandeArticle);
+    }
+
 }
 
 //$articleController = new ArticleController();
