@@ -18,6 +18,11 @@ class CommandeController {
         $ligneCommande = $this->model->getDBCommandesByID($idCommande);
         echo json_encode($ligneCommande);
     }
+
+    public function getArtByCommande ($idCommande) {
+        $artByCommande = $this->model->getDBArtByCommande($idCommande);
+        echo json_encode($artByCommande);
+    }
 }
 
 //$commandesController = new CommandeController();

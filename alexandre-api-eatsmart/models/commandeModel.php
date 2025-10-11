@@ -24,6 +24,17 @@ class CommandeModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getDBArtByCommande ($idCommande) {
+        $requete = "SELECT article.nom, article.prix, article.description 
+        FROM `assoc_article_commande` JOIN article 
+        ON article.id_article=assoc_article_commande.id_article
+        WHERE id_commande = :idCommande";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindValue(":idCommande", $idCommande, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 //$commande1 = new CommandeModel();

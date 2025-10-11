@@ -52,7 +52,11 @@ if (empty($_GET["page"])) {
 
         case "commandes" :
             if (isset($url[1])) {
-                $commandeController->getCommandesByID($url[1]);
+                if (!(isset($url[2]))){
+                    $commandeController->getCommandesByID($url[1]);
+                } elseif (isset($url[2]) && $url[2] == "articles"){
+                    $commandeController->getArtByCommande($url[1]);
+                }
             } else {
                 $commandeController->getAllCommandes();
             }
