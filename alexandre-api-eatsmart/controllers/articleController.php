@@ -30,6 +30,15 @@ class ArticleController {
         echo json_encode($ligneArt);
     }
 
+    public function deleteArt($id){
+        $success = $this->model->deleteDBArt($id);
+        if($success){
+            http_response_code(204);
+        } else {
+            http_response_code(404);
+            echo json_encode(["message" => "Article introuvable"]);
+        }
+    }
 }
 
 //$articleController = new ArticleController();

@@ -50,6 +50,15 @@ class ArticleModel {
         $stmt->execute();
         return $this->getDBArticleById($data->id_article);
     }
+
+    public function deleteDBArt($id){
+        $requete = "DELETE FROM article WHERE id_article = :id
+        ";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
 
 //$article1 = new ArticleModel();
