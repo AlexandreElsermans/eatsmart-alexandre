@@ -56,8 +56,14 @@ Adresse de l'API (en local) : http://localhost/alexandre-api-eatsmart/
 
 Voici les différents endpoints de l'API : 
 - `GET /articles` → Afficher la liste des articles
-- `GET /articles/{id}` → Afficher l'article avec l'id égal à {id}
 - `GET /categories` → Afficher la liste des catégories
-- `GET /categories/{id}` → Afficher la catégorie avec l'id égal à {id}
 - `GET /commandes` → Afficher la liste des commandes
-- `GET /commandes/{id}` → Afficher la commande avec l'id égal à {id}
+
+- `GET /articles/{id}` → Affiche l'article avec l'id égal à {id}
+- `GET /categories/{id}` → Affiche la catégorie avec l'id égal à {id}
+- `GET /commandes/{id}` → Affiche la commande avec l'id égal à {id}
+
+- `GET /categories/{id}/articles` → Affiche tous les articles appartenant à la catégorie {id}
+- `GET /articles/{id}/commandes` → Affiche toutes les commandes contenant l’article {id}
+- `GET /commandes/{id}/articles` → Affiche le détail des articles d’une commande {id}
+
