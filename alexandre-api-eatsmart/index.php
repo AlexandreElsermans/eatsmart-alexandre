@@ -20,21 +20,31 @@ if (empty($_GET["page"])) {
     // On découpe cette chaîne en segments, en séparant sur le caractère "/"
     // Cela donne un tableau, ex : ["articles", "3"]
     $url = explode("/", $_GET['page']);
+    $method = $_SERVER['REQUEST_METHOD'];
 
     // On teste le premier segment pour déterminer la ressource demandée
     switch($url[0]) {
-        case "articles" : 
-            // Si un second segment est présent (ex: un ID), on l’utilise
-            if (isset($url[1])) {
-                if (!(isset($url[2]))) {
-                    // Exemple : /articles/3 → affiche les infos de l'article 3
-                    $articleController->getArticleByID($url[1]);
-                } elseif (isset($url[2]) && $url[2] == "commandes") {
-                    $articleController->getCommandeByArticle($url[1]);
-                }
-            } else {
-                // Sinon, on affiche tous les articles
-                $articleController->getAllArticles();
+        case "articles" :
+            switch($method){
+                case "GET":
+                    // Si un second segment est présent (ex: un ID), on l’utilise
+                    if (isset($url[1])) {
+                        if (!(isset($url[2]))) {
+                            // Exemple : /articles/3 → affiche les infos de l'article 3
+                            $articleController->getArticleByID($url[1]);
+                        } elseif (isset($url[2]) && $url[2] == "commandes") {
+                            $articleController->getCommandeByArticle($url[1]);
+                        }
+                    } else {
+                        // Sinon, on affiche tous les articles
+                        $articleController->getAllArticles();
+                    }
+                    break;
+
+                case "POST":
+                    $data = json_decode(file_get_contents("php://input"));
+                    $articleController->createArt($data);
+                    break;
             }
             break;
 

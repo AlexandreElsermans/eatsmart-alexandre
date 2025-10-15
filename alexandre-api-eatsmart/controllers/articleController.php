@@ -24,6 +24,12 @@ class ArticleController {
         echo json_encode($commandeArticle);
     }
 
+    public function createArt($data){
+        $ligneArt = $this->model->createDBArt($data);
+        http_response_code(201);
+        echo json_encode($ligneArt);
+    }
+
 }
 
 //$articleController = new ArticleController();

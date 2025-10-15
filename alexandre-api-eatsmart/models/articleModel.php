@@ -36,6 +36,20 @@ class ArticleModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function createDBArt($data){
+        $req = "INSERT INTO article (id_article, nom, prix, description, id_categorie)
+        VALUES (:id, :nom, :px, :description, :idCat)
+        ";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(":id", $data->id_article, PDO::PARAM_INT);
+        $stmt->bindParam(":nom", $data->nom, PDO::PARAM_STR);
+        $stmt->bindParam(":px", $data->prix, PDO::PARAM_INT);
+        $stmt->bindParam(":description", $data->description, PDO::PARAM_STR);
+        $stmt->bindParam(":idCat", $data->id_categorie, PDO::PARAM_INT);
+        $stmt->execute();
+        return $this->getDBArticleById($data->id_article);
+    }
 }
 
 //$article1 = new ArticleModel();
