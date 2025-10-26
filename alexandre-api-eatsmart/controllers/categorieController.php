@@ -23,6 +23,12 @@ class CategorieController {
         $articleByCat = $this->model->getDBArticleByCat($idCat);
         echo json_encode($articleByCat);
     }
+
+    public function createCat($data){
+        $newCat = $this->model->createDBCat($data);
+        http_response_code(201);
+        echo json_encode($newCat);
+    }
 }
 
 //$categorieController = new CategorieController();

@@ -68,14 +68,23 @@ if (empty($_GET["page"])) {
             break;
 
         case "categories" :
-            if (isset($url[1])) {
-                if (!(isset($url[2]))) {
-                    $categorieController->getCategorieById($url[1]);
-                } elseif (isset($url[2]) && $url[2] == "articles"){
-                    $categorieController->getArticleByCat($url[1]);
-                }
-            } else {
-                $categorieController->getAllCategories();
+            switch($method){
+                case "GET":
+                    if (isset($url[1])) {
+                        if (!(isset($url[2]))) {
+                            $categorieController->getCategorieById($url[1]);
+                        } elseif (isset($url[2]) && $url[2] == "articles"){
+                            $categorieController->getArticleByCat($url[1]);
+                        }
+                    } else {
+                        $categorieController->getAllCategories();
+                    }
+                    break;
+
+                case "POST":
+                    $data = json_decode(file_get_contents("php://input"));
+                    $categorieController->createCat($data);
+                    break;
             }
             break;
 
