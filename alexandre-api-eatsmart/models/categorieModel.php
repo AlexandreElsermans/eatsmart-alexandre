@@ -45,6 +45,15 @@ class CategorieModel {
         $stmt->execute();
         return $this->getDBCategorieById($data->id_categorie);
     }
+
+    public function deleteDBCat($id){
+        $requete = "DELETE FROM categorie WHERE id_categorie = :id
+        ";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
 
 //$categorie1 = new CategorieModel();
