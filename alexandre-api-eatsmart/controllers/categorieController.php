@@ -39,6 +39,16 @@ class CategorieController {
             echo json_encode(["message" => "categorie introuvable"]);
         }
     }
+
+    public function updateCat($id, $data){
+        $success = $this->model->updateDBCat($id, $data);
+        if ($success){
+            http_response_code(204);
+        } else {
+            http_response_code(404);
+            echo json_encode(["message" => "categorie introuvable ou non modifiée"]);
+        }
+    }
 }
 
 //$categorieController = new CategorieController();

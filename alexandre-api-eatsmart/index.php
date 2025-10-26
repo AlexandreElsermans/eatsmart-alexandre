@@ -93,6 +93,18 @@ if (empty($_GET["page"])) {
                         http_response_code(400);
                         echo json_encode(["message" => "id_categorie manquant dans l'URL"]);
                     }
+                    break;
+
+                case "PUT":
+                    if (isset($url[1])){
+                        $data = json_decode(file_get_contents("php://input"), true);
+                        $categorieController->updateCat($url[1], $data);
+                    } else {
+                        http_response_code(400);
+                        echo json_encode(["message" => "id_categorie manquant dans l'URL"]);
+                    }
+                    break;
+
             }
             break;
 

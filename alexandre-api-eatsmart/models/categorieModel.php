@@ -54,6 +54,19 @@ class CategorieModel {
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
+
+    public function updateDBCat($id, $data){
+        $requete = "UPDATE categorie
+        SET id_categorie = :idCat, nom = :nomCat
+        WHERE id_categorie = :id
+        ";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindParam(":idCat", $data["id_categorie"], PDO::PARAM_INT);
+        $stmt->bindParam(":nomCat", $data["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
 
 //$categorie1 = new CategorieModel();
