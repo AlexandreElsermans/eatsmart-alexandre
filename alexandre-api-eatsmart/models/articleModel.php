@@ -59,6 +59,22 @@ class ArticleModel {
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
+
+    public function updateDBArticle($id, $data){
+        $requete = "UPDATE article
+        SET id_article = :idA, nom = :nomA, prix = :pxA, description = :dA, id_categorie = :idCat
+        WHERE id_article = :id
+        ";
+        $stmt = $this->pdo->prepare($requete);
+        $stmt->bindParam(":idA", $data["id_article"], PDO::PARAM_INT);
+        $stmt->bindParam(":nomA", $data["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(":pxA", $data["prix"], PDO::PARAM_INT);
+        $stmt->bindParam(":dA", $data["description"], PDO::PARAM_STR);
+        $stmt->bindParam(":idCat", $data["id_categorie"], PDO::PARAM_INT);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
 
 //$article1 = new ArticleModel();
