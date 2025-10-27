@@ -109,14 +109,22 @@ if (empty($_GET["page"])) {
             break;
 
         case "commandes" :
-            if (isset($url[1])) {
-                if (!(isset($url[2]))){
-                    $commandeController->getCommandesByID($url[1]);
-                } elseif (isset($url[2]) && $url[2] == "articles"){
-                    $commandeController->getArtByCommande($url[1]);
-                }
-            } else {
-                $commandeController->getAllCommandes();
+            switch($method){
+                case "GET":
+                    if (isset($url[1])) {
+                        if (!(isset($url[2]))){
+                            $commandeController->getCommandesByID($url[1]);
+                        } elseif (isset($url[2]) && $url[2] == "articles"){
+                            $commandeController->getArtByCommande($url[1]);
+                        }
+                    } else {
+                        $commandeController->getAllCommandes();
+                    }
+                    break;
+
+                case "POST":
+                    $data = json_decode(file_get_contents("php://input"));
+                    $commandeController->createCom($data);
             }
             break;
 

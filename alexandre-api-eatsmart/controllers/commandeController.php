@@ -23,6 +23,12 @@ class CommandeController {
         $artByCommande = $this->model->getDBArtByCommande($idCommande);
         echo json_encode($artByCommande);
     }
+
+    public function createCom($data){
+        $newCom = $this->model->createDBCom($data);
+        http_response_code(201);
+        echo json_encode($newCom);
+    }
 }
 
 //$commandesController = new CommandeController();
