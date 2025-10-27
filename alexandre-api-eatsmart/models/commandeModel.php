@@ -14,12 +14,23 @@ class CommandeModel {
     
     public function getDBAllCommandes()
     {
-        $stmt = $this->pdo->query("SELECT * FROM commande");
+        $stmt = $this->pdo->query("SELECT
+        commande.id_commande, date_commande, prix_total, etat, article.id_article, etat, quantite_article
+        FROM assoc_article_commande
+        JOIN commande ON commande.id_commande = assoc_article_commande.id_commande
+        JOIN article ON article.id_article = assoc_article_commande.id_article
+        ");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getDBCommandesByID ($idCommande) {
-        $stmt = $this->pdo->prepare("SELECT * FROM commande WHERE id_commande = :idCommande");
+        $stmt = $this->pdo->prepare("SELECT
+        commande.id_commande, date_commande, prix_total, etat, article.id_article, etat, quantite_article
+        FROM assoc_article_commande
+        JOIN commande ON commande.id_commande = assoc_article_commande.id_commande
+        JOIN article ON article.id_article = assoc_article_commande.id_article
+        WHERE commande.id_commande = :idCommande
+        ");
         $stmt->bindValue(":idCommande", $idCommande, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
