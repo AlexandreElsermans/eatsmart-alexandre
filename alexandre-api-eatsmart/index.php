@@ -3,6 +3,7 @@
 require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\articleController.php";
 require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\categorieController.php";
 require_once "C:\wamp64\www/eatsmart-alexandre\alexandre-api-eatsmart\controllers\commandeController.php";
+header("Access-Control-Allow-Origin: *");
 
 $articleController = new ArticleController();
 $categorieController = new CategorieController();
