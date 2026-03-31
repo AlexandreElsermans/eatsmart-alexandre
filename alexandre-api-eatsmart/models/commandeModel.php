@@ -60,7 +60,7 @@ class CommandeModel {
 
         $stmt1->bindParam(":idC", $data->id_commande, PDO::PARAM_INT);
         $stmt1->bindParam(":dateC", $data->date_commande, PDO::PARAM_STR);
-        $stmt1->bindParam(":pxC", $data->prix_total, PDO::PARAM_INT);
+        $stmt1->bindParam(":pxC", $data->prix_total);
         $stmt1->bindParam(":etatC", $data->etat, PDO::PARAM_STR);
         $stmt1->execute();
 
